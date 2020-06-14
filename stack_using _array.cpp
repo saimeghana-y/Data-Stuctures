@@ -42,13 +42,15 @@ void srchElement(){
     int i,t;
     if(top == -1)
         cout<<"Stack is empty";
-    cout<<"Enter element to be searched for";
+    cout<<"Enter element to be searched for ";
     cin>>t;
     for(i=top;i>=0;i--){
-        if(stack[i]==t)
-            cout<<t<<" is present at position "<<top-i<<" ";
+        if(stack[i]==t){
+            cout<<t<<" is present at position "<<top-i+1<<" ";
+            return;
+        }
     }
-
+    cout<<t<<" is not in the stack\n";
 }
 int main()
 {
