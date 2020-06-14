@@ -23,10 +23,11 @@ public:
 
 template <class T> Stack<T>::Stack()
 {
-    top =0;
+    top = 0;
 }
 
-template <class T> void Stack<T>::push(T n)
+template <class T> 
+void Stack<T>::push(T n)
 {
     Node<T>* ptr = new Node<T>;
     ptr->n = n;
@@ -64,10 +65,10 @@ int main()
     Stack<int> S;
     int c,n;
     do{
-        cout<<"\nEnter choice:  1->Push  2->Pop  4->Print  0->Exit\n";
+        cout<<"\nEnter choice:  1->Push  2->Pop  3->Print  0->Exit\n";
         cin>>c;
         switch(c){
-            case 1: cout << "Enter the element to be entered. ";
+            case 1: cout << "Enter the element to be pushed ";
                     cin >> n;
                     S.push(n);
                     break;
@@ -75,7 +76,7 @@ int main()
             case 2: S.pop();
                     break;
 
-            case 4: S.print();
+            case 3: S.print();
                     break;
 
             case 0: break;
