@@ -13,7 +13,7 @@ int isBalanced(string str)
             s.push(str[i]);
             continue;
         }
-
+        if(s.size()>0){
         switch (str[i])
         {
         case ')':
@@ -40,19 +40,28 @@ int isBalanced(string str)
                 return 0;
             break;
         }
+    }else return 0;
     }
-
     return (s.empty());
 }
 
 int main()
 {
+    
     string str;
-    getline(cin,str);
+    int n;
+    cin>>n;
+    while(n--){
+        
+        cin>>str;
 
-    if (isBalanced(str))
-        cout << "Balanced";
+        if (isBalanced(str))
+        cout << "YES";
     else
-        cout << "Not Balanced";
+        cout << "NO";
+
+    cout<<endl;
+    }
+
     return 0;
 }
