@@ -41,6 +41,18 @@ void postorder(node * temp){
   }
 }
 
+//recursive insertion
+
+/*
+
+void insertBST(node ** head,node * temp){
+  if(*head == 0) *head = temp;
+  else if((*head) -> data < temp -> data) insertBST(&(*head) -> right,temp);
+  else insertBST(&(*head) -> left, temp);
+}
+
+*/
+
 int main(){
 
   int n;
@@ -50,7 +62,9 @@ int main(){
     cin>>n;
 
     if(n == 0) break;
-
+    
+    //insertBST(&head,createNode(n));
+    
     a = createNode(n);
 
     if(head == NULL) head = a;
