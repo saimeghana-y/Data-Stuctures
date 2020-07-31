@@ -5,7 +5,6 @@ struct Node
 {
     Node * left;
     Node* right;
-    int hd;
     int data;
 };
 
@@ -17,46 +16,26 @@ Node* newNode(int key)
     return node;
 }
 
-void topview(Node* root)
-{
-    if(root==NULL)
-       return;
-     queue<Node*>q;
-     map<int,int> m;
-     int hd=0;
-     root->hd=hd;
-
-    q.push(root);
-
-    while(q.size())
-    {
-        hd=root->hd;
-
-        if(m.count(hd)==0)
-        m[hd]=root->data;
-        if(root->left)
-        {
-            root->left->hd=hd-1;
-            q.push(root->left);
+void topview(Node * root) {
+    
+        queue<pair<int,Node*>> q; 
+        q.push(make_pair(0,root));
+        
+        map<int,Node*> ans;
+        
+        for(auto i=q.front();!q.empty();q.pop(),i=q.front()){
+            
+            if(!i.second) continue;
+            
+            ans.insert(i);
+            
+            q.push(make_pair(i.first+1,i.second->right));
+            q.push(make_pair(i.first-1,i.second->left));
         }
-        if(root->right)
-        {
-            root->right->hd=hd+1;
-            q.push(root->right);
-        }
-        q.pop();
-        root=q.front();
-
-    }
-
-
-
-     for(auto i=m.begin();i!=m.end();i++)
-    {
-        cout<<i->second<<" ";
-    }
-
+        
+        for(auto i:ans) cout<<i.second->data<<" ";
 }
+
 void insert(Node* temp, int key)
 {
     queue<Node*> q;
@@ -94,8 +73,8 @@ int main()
     insert(head,n);
   }
 
-
     cout<<"Top view of Binary Tree\n";
     topview(head);
     return 0;
+    
 }
